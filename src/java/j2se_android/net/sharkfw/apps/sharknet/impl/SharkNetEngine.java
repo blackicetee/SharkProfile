@@ -121,6 +121,5 @@ public class SharkNetEngine implements SharkNet {
     @Override
     public SharkNetChat getChat(String si) throws SharkKBException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    } 
 }
