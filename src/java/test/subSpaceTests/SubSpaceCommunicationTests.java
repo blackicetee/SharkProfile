@@ -67,7 +67,8 @@ public class SubSpaceCommunicationTests {
         sharkNetBob.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
-        PeerSemanticTag bobbobTag = sharkNetBob.createPeerSemanticTag("Bob", TestConstants.bobSIs, TestConstants.bobAddr);
+        PeerSemanticTag bobbobTag = sharkNetBob.getVocabulary().getPeerSTSet().createPeerSemanticTag("Bob", TestConstants.bobSIs, TestConstants.bobAddr);
+        
         sharkNetBob.setOwner(bobbobTag);
         
         // set listener
@@ -75,7 +76,7 @@ public class SubSpaceCommunicationTests {
         sharkNetBob.addListener(bobListener);
         
         // open tcp
-        J2SEAndroidSharkEngine bobSE = sharkNetBob.getSharkEngine();
+        J2SEAndroidSharkEngine bobSE = (J2SEAndroidSharkEngine) sharkNetBob.getSharkEngine();
         bobSE.startTCP(TestConstants.BOBPORT);
 
         // Clara
@@ -83,7 +84,7 @@ public class SubSpaceCommunicationTests {
         sharkNetClara.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
-        PeerSemanticTag claraTag = sharkNetBob.createPeerSemanticTag("Clara", TestConstants.claraSIs, TestConstants.claraAddr);
+        PeerSemanticTag claraTag = sharkNetBob.getVocabulary().getPeerSTSet().createPeerSemanticTag("Clara", TestConstants.claraSIs, TestConstants.claraAddr);
         sharkNetClara.setOwner(claraTag);
         
         // set listener
@@ -91,7 +92,7 @@ public class SubSpaceCommunicationTests {
         sharkNetClara.addListener(claraListener);
         
         // open tcp
-        J2SEAndroidSharkEngine claraSE = sharkNetClara.getSharkEngine();
+        J2SEAndroidSharkEngine claraSE = (J2SEAndroidSharkEngine) sharkNetClara.getSharkEngine();
         claraSE.startTCP(TestConstants.CLARAPORT);
 
         // Alice
@@ -99,15 +100,15 @@ public class SubSpaceCommunicationTests {
         sharkNetAlice.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
-        PeerSemanticTag alicealiceTag = sharkNetAlice.createPeerSemanticTag("Alice", TestConstants.aliceSIs, TestConstants.aliceAddr);
+        PeerSemanticTag alicealiceTag = sharkNetAlice.getVocabulary().getPeerSTSet().createPeerSemanticTag("Alice", TestConstants.aliceSIs, TestConstants.aliceAddr);
         sharkNetAlice.setOwner(alicealiceTag);
 
         // open tcp
-        J2SEAndroidSharkEngine aliceSE = sharkNetAlice.getSharkEngine();
+        J2SEAndroidSharkEngine aliceSE = (J2SEAndroidSharkEngine) sharkNetAlice.getSharkEngine();
         aliceSE.startTCP(TestConstants.ALICEPORT);
         
-        PeerSemanticTag alicebobTag = sharkNetAlice.createPeerSemanticTag("Bob", TestConstants.bobSIs, TestConstants.bobAddr);
-        PeerSemanticTag aliceclaraTag = sharkNetAlice.createPeerSemanticTag("Clara", TestConstants.claraSIs, TestConstants.claraAddr);
+        PeerSemanticTag alicebobTag = sharkNetAlice.getVocabulary().getPeerSTSet().createPeerSemanticTag("Bob", TestConstants.bobSIs, TestConstants.bobAddr);
+        PeerSemanticTag aliceclaraTag = sharkNetAlice.getVocabulary().getPeerSTSet().createPeerSemanticTag("Clara", TestConstants.claraSIs, TestConstants.claraAddr);
         
         ArrayList<PeerSemanticTag> aliceChatPeers = new ArrayList<PeerSemanticTag>();
         aliceChatPeers.add(alicebobTag);
@@ -188,7 +189,8 @@ System.out.println(
 
 // alice writes a message
         String aliceText1 = "bob has entered our chat.";
-        aliceChat.addTextMessage(aliceText1);
+        aliceChat.createEntry(aliceText1);
+//        aliceChat.addTextMessage(aliceText1);
         
         // give it a second
         Thread.sleep(sleepSeconds);
@@ -297,7 +299,8 @@ System.out.println(
         
         // clara writes hello
         String claraText1 = "I'm so glad joining you.";
-        claraChat.addTextMessage(claraText1);
+        claraChat.createEntry(claraText1);
+//        claraChat.addTextMessage(claraText1);
         
         // give it some time
         Thread.sleep(sleepSeconds);
@@ -347,7 +350,8 @@ System.out.println(
 "//////////////////////////////////////////////////////////////////////////////");
 
         String aliceText2 = "Bob has unsubscribed";
-        aliceChat.addTextMessage(aliceText2);
+        aliceChat.createEntry(aliceText2);
+//        aliceChat.addTextMessage(aliceText2);
         
         Thread.sleep(sleepSeconds);
         

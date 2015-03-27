@@ -1,6 +1,7 @@
 package net.sharkfw.apps.sharknet;
 
 import java.io.InputStream;
+import java.util.Enumeration;
 import net.sharkfw.knowledgeBase.*;
 import net.sharkfw.subspace.SubSpace;
 
@@ -49,4 +50,6 @@ public interface SharkNetChat extends SubSpace {
     public void addListener(SharkNetChatListener chatListener);
     
     public void removeListener(SharkNetChatListener chatListener);
+
+    public Enumeration<SharkNetChatEntry> entries();
 }

@@ -166,4 +166,6 @@ public interface SharkNet {
       * @throws SharkKBException 
       */
      public SharkNetChat getChat(String si) throws SharkKBException;
+
+    public void setOwner(PeerSemanticTag owner);
 }

@@ -126,4 +126,9 @@ public class SharkNetEngine implements SharkNet {
     public SharkNetChat getChat(String si) throws SharkKBException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     } 
+
+    @Override
+    public void setOwner(PeerSemanticTag owner) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
