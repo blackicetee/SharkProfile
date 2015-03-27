@@ -624,14 +624,14 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         
         this.guardKP.sendInterest(this.invitationInterest, peer);
                 
-        if(this.hasChildSubSpace()) {
-            Iterator<SubSpace> childIter = this.getChildSubSpaces();
-            while(childIter.hasNext()) {
-                SubSpace child = childIter.next();
-                child.invitePeer(peer);
-            }
-        }
-        
+//        if(this.hasChildSubSpace()) {
+//            Iterator<SubSpace> childIter = this.getChildSubSpaces();
+//            while(childIter.hasNext()) {
+//                SubSpace child = childIter.next();
+//                child.invitePeer(peer);
+//            }
+//        }
+//        
     }
 
     public void sendSubscribe(boolean readonly) throws SharkKBException, SharkSecurityException, IOException {
@@ -802,13 +802,13 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
             // remember that success
             this.setProperty(SUBSPACE_ALL_INVITED, Boolean.toString(true), false);
             
-            if(this.hasChildSubSpace()) {
-                Iterator<SubSpace> childIter = this.getChildSubSpaces();
-                while(childIter.hasNext()) {
-                    SubSpace child = childIter.next();
-                    child.inviteAll();
-                }
-            }
+//            if(this.hasChildSubSpace()) {
+//                Iterator<SubSpace> childIter = this.getChildSubSpaces();
+//                while(childIter.hasNext()) {
+//                    SubSpace child = childIter.next();
+//                    child.inviteAll();
+//                }
+//            }
             
             return true;
         }
@@ -1126,14 +1126,14 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
     // TODO: sub space and child spaces should actually share the list and no duplicates
     protected void setReadOnlyMember(SemanticTag pTag, boolean ro) {
         pTag.setSystemProperty(this.getPeerReadOnlyPropertyName(), Boolean.toString(ro));
-        Iterator<SubSpace> childIter = this.getChildSubSpaces();
-        while(childIter.hasNext()) {
-            SubSpace child = childIter.next();
-            if(child instanceof AbstractSubSpace) {
-                AbstractSubSpace subSpaceChild = (AbstractSubSpace) child;
-                subSpaceChild.setReadOnlyMember(pTag, ro);
-            }
-        }
+//        Iterator<SubSpace> childIter = this.getChildSubSpaces();
+//        while(childIter.hasNext()) {
+//            SubSpace child = childIter.next();
+//            if(child instanceof AbstractSubSpace) {
+//                AbstractSubSpace subSpaceChild = (AbstractSubSpace) child;
+//                subSpaceChild.setReadOnlyMember(pTag, ro);
+//            }
+//        }
     }
 
     /**
@@ -1419,13 +1419,13 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
             }
             
             // subscribe child sub spaces if any
-            Iterator<SubSpace> childIter = this.getChildSubSpaces();
-            while(childIter.hasNext()) {
-                SubSpace childSubSpace = childIter.next();
-                if(!childSubSpace.isSubscribed()) {
-                    childSubSpace.subscribe();
-                }
-            }
+//            Iterator<SubSpace> childIter = this.getChildSubSpaces();
+//            while(childIter.hasNext()) {
+//                SubSpace childSubSpace = childIter.next();
+//                if(!childSubSpace.isSubscribed()) {
+//                    childSubSpace.subscribe();
+//                }
+//            }
             
         } catch (SharkKBException ex) {
             throw new SharkSubSpaceException(ex.getMessage());
@@ -1579,7 +1579,6 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         return cp;
     }
     
-    @Override
     public ContextPoint createSubSpaceCP() throws SharkKBException {
         try {
             ContextPoint cp = this.createSubSpaceCP(null);
@@ -1590,6 +1589,7 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         }
     }
     
+    @Override
     public ArrayList<Information> getNewInformationSinceLastVisit() {
     	
     	long t0 = 0;
@@ -1710,35 +1710,35 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         return set;
     }
     
-    private String getChildDescriptionString() {
-        // child sub spaces?
-        Vector<String> childDescriptions = new Vector<String>();
-
-        Iterator<SubSpace> childSubSpaces = this.getChildSubSpaces();
-        while(childSubSpaces != null && childSubSpaces.hasNext()) {
-            SubSpace child = childSubSpaces.next();
-            String childName = child.getName();
-            childDescriptions.add(childName);
-
-            String childSI = child.getSubSpaceSI();
-            childDescriptions.add(childSI);
-        }
-
-            if(!childDescriptions.isEmpty()) {
-                String childString = Util.vector2String(childDescriptions, CHILD_STRING_DELIMITER);
-                return childString;
-            }
-            
-            return null;
-    }
-    
-    protected Vector<String> getChildDescription(String descriptionString) {
-        if(descriptionString != null) {
-            return Util.string2Vector(descriptionString, CHILD_STRING_DELIMITER);
-        }
-        
-        return null;
-    }
+//    private String getChildDescriptionString() {
+//        // child sub spaces?
+//        Vector<String> childDescriptions = new Vector<String>();
+//
+//        Iterator<SubSpace> childSubSpaces = this.getChildSubSpaces();
+//        while(childSubSpaces != null && childSubSpaces.hasNext()) {
+//            SubSpace child = childSubSpaces.next();
+//            String childName = child.getName();
+//            childDescriptions.add(childName);
+//
+//            String childSI = child.getSubSpaceSI();
+//            childDescriptions.add(childSI);
+//        }
+//
+//            if(!childDescriptions.isEmpty()) {
+//                String childString = Util.vector2String(childDescriptions, CHILD_STRING_DELIMITER);
+//                return childString;
+//            }
+//            
+//            return null;
+//    }
+//    
+//    protected Vector<String> getChildDescription(String descriptionString) {
+//        if(descriptionString != null) {
+//            return Util.string2Vector(descriptionString, CHILD_STRING_DELIMITER);
+//        }
+//        
+//        return null;
+//    }
     
     public STSet getSubSpaceTopics() throws SharkKBException {
         if(this.subSpaceTopics == null) {
@@ -1751,10 +1751,10 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
             this.subSpaceTopic.setProperty(SubSpace.SUBSPACE_SUBTYPE, 
                     this.getSubSpaceType());
             
-            String childString = this.getChildDescriptionString();
-            if(childString != null) {
-                this.subSpaceTopic.setProperty(SubSpace.SUBSPACE_CHILDREN, childString);
-            }
+//            String childString = this.getChildDescriptionString();
+//            if(childString != null) {
+//                this.subSpaceTopic.setProperty(SubSpace.SUBSPACE_CHILDREN, childString);
+//            }
             
             STSet topics = this.subKB.getTopicSTSet();
             if(topics != null) {
@@ -1762,14 +1762,14 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
                 this.subSpaceTopic.setProperty(SubSpace.SUBSPACE_PIGGY_BACK_TOPIC_SET, topicsString);
             }
             
-            if(this.hasParentSubSpace()) {
-                try {
-                    String si = this.getParentSubSpace().getSubSpaceSI();
-                    this.subSpaceTopic.setProperty(PARENT_SUBSPACE_SI_VALUE, si);
-                } catch (SharkSubSpaceException ex) {
-                    // ignore
-                }
-            }
+//            if(this.hasParentSubSpace()) {
+//                try {
+//                    String si = this.getParentSubSpace().getSubSpaceSI();
+//                    this.subSpaceTopic.setProperty(PARENT_SUBSPACE_SI_VALUE, si);
+//                } catch (SharkSubSpaceException ex) {
+//                    // ignore
+//                }
+//            }
         }
         
         return this.subSpaceTopics;
@@ -2035,53 +2035,51 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
     //                       child spaces                             //
     ////////////////////////////////////////////////////////////////////
     
-    HashSet<SubSpace> childSubSpaces = new HashSet<SubSpace>();
-    
-    /**
-     * add a subSpace to this subspace. Child subspaces are unsubscribed if
-     * parent subspace becomes unsubscribed. They share same topic etc.
-     * @param subSpace 
-     * @deprecated will be removed when sub space becomes part of SharkFW 3.0.
-     * Child sub space creation will than be performed by parent sub space itself.
-     * 
-     */
-    @Override
-    public void addChildSubSpace(SubSpace subSpace) {
-        this.childSubSpaces.add(subSpace);
-        subSpace.setParentSubSpace(this);
-    }
-    
-    private SubSpace parentSubSpace;
-    
-    @Override
-    public void setParentSubSpace(SubSpace subSpace) {
-        this.parentSubSpace = subSpace;
-        try {
-            this.setProperty(PARENT_SUBSPACE_SI_VALUE, subSpace.getSubSpaceSI());
-        } catch (SharkKBException ex) {
-            L.e("cannot save parent subspace sis - fatal", this);
-        }
-    }
-    
-    @Override
-    public Iterator<SubSpace> getChildSubSpaces() {
-        return this.childSubSpaces.iterator();
-    }
-    
-    @Override
-    public void removeChildSubSpace(SubSpace subSpace) {
-        this.childSubSpaces.remove(subSpace);
-    }
-    
-    @Override
-    public void removeSubSpaceEntry(SubSpaceEntry entry) throws SharkKBException {
-        if(entry instanceof AbstractSubSpaceEntry) {
-            AbstractSubSpaceEntry aEntry = (AbstractSubSpaceEntry) entry;
-            
-            this.removeSubSpaceEntry(this.subKB, aEntry);
-        }
-    }    
-    
+//    HashSet<SubSpace> childSubSpaces = new HashSet<SubSpace>();
+//    
+//    /**
+//     * add a subSpace to this subspace. Child subspaces are unsubscribed if
+//     * parent subspace becomes unsubscribed. They share same topic etc.
+//     * @param subSpace 
+//     * @deprecated will be removed when sub space becomes part of SharkFW 3.0.
+//     * Child sub space creation will than be performed by parent sub space itself.
+//     * 
+//     */
+//    public void addChildSubSpace(SubSpace subSpace) {
+//        this.childSubSpaces.add(subSpace);
+//        subSpace.setParentSubSpace(this);
+//    }
+//    
+//    private SubSpace parentSubSpace;
+//    
+//    public void setParentSubSpace(SubSpace subSpace) {
+//        this.parentSubSpace = subSpace;
+//        try {
+//            this.setProperty(PARENT_SUBSPACE_SI_VALUE, subSpace.getSubSpaceSI());
+//        } catch (SharkKBException ex) {
+//            L.e("cannot save parent subspace sis - fatal", this);
+//        }
+//    }
+//    
+//    @Override
+//    public Iterator<SubSpace> getChildSubSpaces() {
+//        return this.childSubSpaces.iterator();
+//    }
+//    
+//    @Override
+//    public void removeChildSubSpace(SubSpace subSpace) {
+//        this.childSubSpaces.remove(subSpace);
+//    }
+//    
+//    @Override
+//    public void removeSubSpaceEntry(SubSpaceEntry entry) throws SharkKBException {
+//        if(entry instanceof AbstractSubSpaceEntry) {
+//            AbstractSubSpaceEntry aEntry = (AbstractSubSpaceEntry) entry;
+//            
+//            this.removeSubSpaceEntry(this.subKB, aEntry);
+//        }
+//    }    
+//    
     @Override
     public void syncAllowedPeers(Iterator<PeerSemanticTag> allowedPeersIter) 
             throws SharkSubSpaceException {
@@ -2188,46 +2186,46 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         }
     }    
     
-    @Override
-    public boolean hasChildSubSpace() {
-         return (this.childSubSpaces != null && !this.childSubSpaces.isEmpty());
-    }
-    
-    @Override
-    public boolean hasParentSubSpace() {
-        try {
-            if(this.getParentSubSpace() != null) {
-                return true;
-            }
-        }
-        catch(SharkException se) {
-        }
-        
-        return false;
-    }
-    
-    @Override
-    public boolean isChildSubSpace() {
-        return this.hasParentSubSpace();
-    }
-    
-    @Override
-    public SubSpace getParentSubSpace() throws SharkSubSpaceException {
-        if(this.parentSubSpace != null) {
-            return this.parentSubSpace;
-        }
-        
-        try {
-            String value = this.getProperty(PARENT_SUBSPACE_SI_VALUE);
-        } catch (SharkKBException ex) {
-            L.e("cannot get parent subspace sis", this);
-            return null;
-
-        }
-        
-        // TODO
-        throw new SharkSubSpaceException("not yet implemented");
-    }
+//    @Override
+//    public boolean hasChildSubSpace() {
+//         return (this.childSubSpaces != null && !this.childSubSpaces.isEmpty());
+//    }
+//    
+//    @Override
+//    public boolean hasParentSubSpace() {
+//        try {
+//            if(this.getParentSubSpace() != null) {
+//                return true;
+//            }
+//        }
+//        catch(SharkException se) {
+//        }
+//        
+//        return false;
+//    }
+//    
+//    @Override
+//    public boolean isChildSubSpace() {
+//        return this.hasParentSubSpace();
+//    }
+//    
+//    @Override
+//    public SubSpace getParentSubSpace() throws SharkSubSpaceException {
+//        if(this.parentSubSpace != null) {
+//            return this.parentSubSpace;
+//        }
+//        
+//        try {
+//            String value = this.getProperty(PARENT_SUBSPACE_SI_VALUE);
+//        } catch (SharkKBException ex) {
+//            L.e("cannot get parent subspace sis", this);
+//            return null;
+//
+//        }
+//        
+//        // TODO
+//        throw new SharkSubSpaceException("not yet implemented");
+//    }
 
     /**
      * Reimplement that method - it is most time consuming

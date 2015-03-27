@@ -179,12 +179,14 @@ public interface SubSpace extends PropertyHolder {
     /**
      * Set this peer a full sub space member - it can read and write.
      * @param peer 
+     * @throws net.sharkfw.subspace.SharkSubSpaceException 
      */
     public void setFullMember(PeerSemanticTag peer) throws SharkSubSpaceException;
     
     /**
      * Set this peer a read only member in this sub space.
      * @param peer 
+     * @throws net.sharkfw.subspace.SharkSubSpaceException 
      */
     public void setReadonlyMember(PeerSemanticTag peer) throws SharkSubSpaceException;
     
@@ -219,6 +221,7 @@ public interface SubSpace extends PropertyHolder {
      * performed by subspace owner. 
      * 
      * @param peer
+     * @param fullmember
      * @throws SharkSubSpaceException
      * @throws SharkKBException 
      */
@@ -245,8 +248,7 @@ public interface SubSpace extends PropertyHolder {
      * The remote peer can than think about asking for invitation.
      * 
      * @param peer
-     * @throws SharkSubSpaceException
-     * @throws SharkKBException 
+     * @throws SharkSubSpaceException 
      */
     public void tellPeer(PeerSemanticTag peer) 
             throws SharkSubSpaceException, SharkSubSpaceException;
@@ -286,6 +288,7 @@ public interface SubSpace extends PropertyHolder {
      * given timestamp.
      * 
      * @param from Time stamp - milliseconds from 1.1.1970
+     * @param duration
      * @throws SharkSubSpaceException 
      */
     public void subscribe(long from, long duration) throws SharkSubSpaceException;
@@ -326,6 +329,7 @@ public interface SubSpace extends PropertyHolder {
      * knowledge port - it won't receive any information regarding that sub space.
      * 
      * Nothing happens if this peer is not subscribed.
+     * @throws net.sharkfw.subspace.SharkSubSpaceException
      */
     public void unsubscribe() throws SharkSubSpaceException;
     
@@ -359,19 +363,19 @@ public interface SubSpace extends PropertyHolder {
     
     public void removeListener(SubSpaceListener listener);
 
-    /**
-     * add a subSpace to this subspace. Child subspaces are unsubscribed if
-     * parent subspace becomes unsubscribed. They share same topic etc.
-     * @param subSpace 
-     * 
-     */
-    public void addChildSubSpace(SubSpace subSpace);
-
-    public void removeChildSubSpace(SubSpace subSpace);
-    
-    public Iterator<SubSpace> getChildSubSpaces();
-    
-    public void removeSubSpaceEntry(SubSpaceEntry entry) throws SharkKBException;
+//    /**
+//     * add a subSpace to this subspace. Child subspaces are unsubscribed if
+//     * parent subspace becomes unsubscribed. They share same topic etc.
+//     * @param subSpace 
+//     * 
+//     */
+//    public void addChildSubSpace(SubSpace subSpace);
+//
+//    public void removeChildSubSpace(SubSpace subSpace);
+//    
+//    public Iterator<SubSpace> getChildSubSpaces();
+//    
+//    public void removeSubSpaceEntry(SubSpaceEntry entry) throws SharkKBException;
     
     /**
      * This methods synchronizes peer list with externally provided list:
@@ -390,23 +394,23 @@ public interface SubSpace extends PropertyHolder {
     
     public J2SEAndroidSharkEngine getSharkEngine();
     
-    public boolean hasChildSubSpace();
-    
-    public boolean hasParentSubSpace();
-    
-    public SubSpace getParentSubSpace() throws SharkSubSpaceException;
-    
-    public ContextPoint createSubSpaceCP() throws SharkKBException;
-
-    public void setParentSubSpace(SubSpace parentSubSpace);
-    
-    public boolean isChildSubSpace();
+//    public boolean hasChildSubSpace();
+//    
+//    public boolean hasParentSubSpace();
+//    
+//    public SubSpace getParentSubSpace() throws SharkSubSpaceException;
+//    
+//    public ContextPoint createSubSpaceCP() throws SharkKBException;
+//
+//    public void setParentSubSpace(SubSpace parentSubSpace);
+//    
+//    public boolean isChildSubSpace();
     
     void doInsert(Knowledge knowledge, KEPConnection response);
     
     void doExpose(SharkCS interest, KEPConnection response);
     
-    public Enumeration<ContextPoint> getAllCPs() throws SharkKBException;
+//    public Enumeration<ContextPoint> getAllCPs() throws SharkKBException;
 
-	public void invitePeer(PeerSemanticTag peer) throws SharkKBException, SharkSecurityException, IOException;
+    public void invitePeer(PeerSemanticTag peer) throws SharkKBException, SharkSecurityException, IOException;
 }

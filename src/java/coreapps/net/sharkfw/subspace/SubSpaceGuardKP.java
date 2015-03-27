@@ -13,6 +13,7 @@ import net.sharkfw.knowledgeBase.SharkCS;
 import net.sharkfw.knowledgeBase.SharkCSAlgebra;
 import net.sharkfw.knowledgeBase.SharkKB;
 import net.sharkfw.knowledgeBase.SharkKBException;
+import net.sharkfw.knowledgeBase.SharkVocabulary;
 import net.sharkfw.kp.KPListener;
 import net.sharkfw.peer.KEPConnection;
 import net.sharkfw.peer.SharkEngine;
@@ -41,7 +42,7 @@ import net.sharkfw.system.SharkException;
  */
 public class SubSpaceGuardKP extends StandardKP {
     private final SubSpaceManager ssm;
-    private final SharkKB baseKB;
+    private final SharkVocabulary baseKB;
     
     public SubSpaceGuardKP(SharkEngine se, SubSpaceManager sne, SharkKB kb) {
         super(se, null, kb);
@@ -316,7 +317,6 @@ public class SubSpaceGuardKP extends StandardKP {
         this.addListener(listener);
         super.doInsert(k, response);
         this.removeListener(listener);
-        this.setKB(this.baseKB);
         this.setInterest(null);
     }
 }

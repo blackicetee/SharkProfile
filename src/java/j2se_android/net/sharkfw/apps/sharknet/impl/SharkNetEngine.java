@@ -18,6 +18,10 @@ import net.sharkfw.peer.SharkEngine;
  */
 public class SharkNetEngine implements SharkNet {
 
+    public static SharkNet createSharkNet(String BOBKBFOLDER) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public SharkEngine getSharkEngine() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

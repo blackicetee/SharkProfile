@@ -2,11 +2,12 @@ package net.sharkfw.apps.sharknet;
 
 import java.io.InputStream;
 import net.sharkfw.knowledgeBase.*;
+import net.sharkfw.subspace.SubSpace;
 
 /**
  * @author thsc
  */
-public interface SharkNetChat {
+public interface SharkNetChat extends SubSpace {
     /**
      * Create an entry in this chat with a message.
      * @param message
