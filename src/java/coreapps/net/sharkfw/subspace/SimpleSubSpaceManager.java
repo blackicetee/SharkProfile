@@ -8,7 +8,7 @@ import net.sharkfw.knowledgeBase.SemanticTag;
 import net.sharkfw.knowledgeBase.SharkCSAlgebra;
 import net.sharkfw.knowledgeBase.SharkKB;
 import net.sharkfw.knowledgeBase.SharkKBException;
-import net.sharkfw.peer.J2SEAndroidSharkEngine;
+import net.sharkfw.peer.SharkEngine;
 import net.sharkfw.system.SharkSecurityException;
 
 /**
@@ -16,19 +16,39 @@ import net.sharkfw.system.SharkSecurityException;
  * @author thsc
  */
 public class SimpleSubSpaceManager implements SubSpaceManager {
-    private final J2SEAndroidSharkEngine se;
+    private final SharkEngine se;
     private final SharkKB baseKB;
     private final SubSpaceGuardKP guardKP;
     private final ArrayList<SubSpace> subspaces;
     
-    public SimpleSubSpaceManager(J2SEAndroidSharkEngine se, SharkKB baseKB) {
+    public SimpleSubSpaceManager(SharkEngine se, SharkKB baseKB) {
         this.se = se;
         this.baseKB = baseKB;
         this.guardKP = new SubSpaceGuardKP(se, this, baseKB);
         
         this.subspaces = new ArrayList();
+        
+        this.restore();
     }
-
+    
+    public void addSubSpace(SubSpace subSpace) {
+        this.subspaces.add(subSpace);
+        this.persist();
+    }
+    
+    public void removeSubSpace(SubSpace subSpace) {
+        this.subspaces.remove(subSpace);
+        this.persist();
+    }
+    
+    void persist() {
+        // TODO: store subspace description in kb
+    }
+    
+    void restore() {
+        // TODO: restrieve and reinstanciate subspaces from kb
+    }
+    
     @Override
     public Iterator<SubSpace> getSubSpaces() throws SharkKBException {
         return this.subspaces.iterator();

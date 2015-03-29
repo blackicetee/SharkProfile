@@ -168,4 +168,6 @@ public interface SharkNet {
      public SharkNetChat getChat(String si) throws SharkKBException;
 
     public void setOwner(PeerSemanticTag owner);
+    
+    public PeerSemanticTag getOwner();
 }

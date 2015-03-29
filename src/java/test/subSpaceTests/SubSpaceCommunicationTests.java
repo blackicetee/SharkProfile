@@ -8,12 +8,16 @@ import net.sharkfw.apps.sharknet.SharkNetChat;
 import net.sharkfw.apps.sharknet.SharkNetChatEntry;
 import net.sharkfw.apps.sharknet.SharkNetException;
 import net.sharkfw.apps.sharknet.impl.SharkNetEngine;
+import net.sharkfw.kep.SharkProtocolNotSupportedException;
 
 import net.sharkfw.knowledgeBase.PeerSemanticTag;
 import net.sharkfw.knowledgeBase.SharkCSAlgebra;
+import net.sharkfw.knowledgeBase.SharkKB;
 import net.sharkfw.knowledgeBase.SharkKBException;
 import net.sharkfw.knowledgeBase.filesystem.FSSharkKB;
+import net.sharkfw.knowledgeBase.inmemory.InMemoSharkKB;
 import net.sharkfw.peer.J2SEAndroidSharkEngine;
+import net.sharkfw.peer.SharkEngine;
 import net.sharkfw.subspace.SharkSubSpaceException;
 import net.sharkfw.system.L;
 import net.sharkfw.system.SharkSecurityException;
@@ -54,7 +58,7 @@ public class SubSpaceCommunicationTests {
     }
     
     @Test
-     public void un_subscribing() throws SharkKBException, SharkNetException, InterruptedException, SharkSecurityException, IOException, SharkSubSpaceException {
+     public void un_subscribing() throws SharkKBException, SharkNetException, InterruptedException, SharkSecurityException, IOException, SharkSubSpaceException, SharkProtocolNotSupportedException {
         SharkNet sharkNetAlice, sharkNetBob, sharkNetClara;
         
         L.setLogLevel(L.LOGLEVEL_ALL);
@@ -63,7 +67,11 @@ public class SubSpaceCommunicationTests {
         FSSharkKB.removeFSStorage(TestConstants.kbFolder);
         
         // Bob
-        sharkNetBob = SharkNetEngine.createSharkNet(TestConstants.BOBKBFOLDER);
+        SharkKB bobKB = new InMemoSharkKB();
+        SharkEngine bobSE = new J2SEAndroidSharkEngine();
+//        sharkNetClara = SharkNetEngine.createSharkNet(TestConstants.CLARAKBFOLDER);
+        sharkNetBob = SharkNetEngine.createSharkNet(bobSE, bobKB);
+//        sharkNetBob = SharkNetEngine.createSharkNet(TestConstants.BOBKBFOLDER);
         sharkNetBob.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
@@ -76,11 +84,14 @@ public class SubSpaceCommunicationTests {
         sharkNetBob.addListener(bobListener);
         
         // open tcp
-        J2SEAndroidSharkEngine bobSE = (J2SEAndroidSharkEngine) sharkNetBob.getSharkEngine();
         bobSE.startTCP(TestConstants.BOBPORT);
 
         // Clara
-        sharkNetClara = SharkNetEngine.createSharkNet(TestConstants.CLARAKBFOLDER);
+//        sharkNetClara = SharkNetEngine.createSharkNet(TestConstants.CLARAKBFOLDER);
+        SharkKB claraKB = new InMemoSharkKB();
+        SharkEngine claraSE = new J2SEAndroidSharkEngine();
+//        sharkNetClara = SharkNetEngine.createSharkNet(TestConstants.CLARAKBFOLDER);
+        sharkNetClara = SharkNetEngine.createSharkNet(claraSE, claraKB);
         sharkNetClara.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
@@ -92,11 +103,14 @@ public class SubSpaceCommunicationTests {
         sharkNetClara.addListener(claraListener);
         
         // open tcp
-        J2SEAndroidSharkEngine claraSE = (J2SEAndroidSharkEngine) sharkNetClara.getSharkEngine();
         claraSE.startTCP(TestConstants.CLARAPORT);
 
         // Alice
-        sharkNetAlice = SharkNetEngine.createSharkNet(TestConstants.ALICEKBFOLDER);
+        SharkKB aliceKB = new InMemoSharkKB();
+        SharkEngine aliceSE = new J2SEAndroidSharkEngine();
+//        sharkNetClara = SharkNetEngine.createSharkNet(TestConstants.CLARAKBFOLDER);
+        sharkNetAlice = SharkNetEngine.createSharkNet(aliceSE, aliceKB);
+//        sharkNetAlice = SharkNetEngine.createSharkNet(TestConstants.ALICEKBFOLDER);
         sharkNetAlice.getSharkEngine().setConnectionTimeOut(keepConnectionAlive);
         
         // set owner
@@ -104,7 +118,6 @@ public class SubSpaceCommunicationTests {
         sharkNetAlice.setOwner(alicealiceTag);
 
         // open tcp
-        J2SEAndroidSharkEngine aliceSE = (J2SEAndroidSharkEngine) sharkNetAlice.getSharkEngine();
         aliceSE.startTCP(TestConstants.ALICEPORT);
         
         PeerSemanticTag alicebobTag = sharkNetAlice.getVocabulary().getPeerSTSet().createPeerSemanticTag("Bob", TestConstants.bobSIs, TestConstants.bobAddr);

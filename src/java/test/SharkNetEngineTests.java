@@ -1,5 +1,9 @@
 import net.sharkfw.apps.sharknet.SharkNet;
 import net.sharkfw.apps.sharknet.impl.SharkNetEngine;
+import net.sharkfw.knowledgeBase.SharkKB;
+import net.sharkfw.knowledgeBase.inmemory.InMemoSharkKB;
+import net.sharkfw.peer.J2SEAndroidSharkEngine;
+import net.sharkfw.peer.SharkEngine;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +27,8 @@ public class SharkNetEngineTests {
 
      @Test
      public void basics() {
-         SharkNet sn = new SharkNetEngine();
+         SharkKB baseKB = new InMemoSharkKB();
+         SharkEngine se = new J2SEAndroidSharkEngine();
+         SharkNet sn = SharkNetEngine.createSharkNet(se, baseKB);
      }
 }

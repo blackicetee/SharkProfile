@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import net.sharkfw.system.TimeLong;
 import net.sharkfw.kep.format.XMLSerializer;
@@ -126,7 +123,6 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
     //                      came from SubSpaceKP                       //
     /////////////////////////////////////////////////////////////////////
     
-    private SharkKB kb; // TODO init with constructor
     /**
      * Iterate context points and change topics if they fit to this sub space. 
      * Delegate assimilating to standard KP. 
@@ -139,7 +135,7 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
     @Override
     public void doInsert(Knowledge knowledge, KEPConnection response) {
         L.d("Sub space was called to insert something: " + 
-                L.knowledge2String(knowledge.contextPoints()), this);
+                L.knowledge2String(knowledge), this);
         
         if(!this.isActiv) {
             L.d("stop processing sub space request because sub space is not activ anymore", this);
@@ -548,6 +544,8 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
      * @param exceptPeer don't send to this peer
      * @param toSubscribed send only to subscribed peers or only to not subscribed peers
      * @throws SharkKBException 
+     * @throws net.sharkfw.system.SharkSecurityException 
+     * @throws java.io.IOException 
      */
     public void sendUpdateToAll(PeerSemanticTag exceptPeer, boolean toSubscribed) 
             throws SharkKBException, SharkSecurityException, IOException {
@@ -609,6 +607,7 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
         }
     }
     
+    @Override
     public void invitePeer(PeerSemanticTag peer) throws SharkKBException, SharkSecurityException, IOException {
         if(SharkCSAlgebra.identical(peer, this.getOwner())) {
             throw new SharkKBException("Inviting sub space owner is useless.");
@@ -1848,7 +1847,7 @@ abstract public class AbstractSubSpace implements SubSpace, KPListener {
      * subscribed users.
      * @param cp 
      */
-    protected void publishToSubscribers(ContextPoint cp) throws SharkKBException, SharkSecurityException {
+    public void publishToSubscribers(ContextPoint cp) throws SharkKBException, SharkSecurityException {
         SemanticTag copyTopic;
 
 //        if(this.subSpaceEngine == null) {
