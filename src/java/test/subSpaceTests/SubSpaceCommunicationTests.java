@@ -159,13 +159,16 @@ System.out.println(
         SharkNetChat bobChat = bobListener.lastInvitedChat;
         // remove - for testing
         bobListener.lastInvitedChat = null;
+  
+        // TODO
+//        PeerSemanticTag bobInvitedChatOwner = bobChat.getOwner();
         
-        PeerSemanticTag bobInvitedChatOwner = bobChat.getOwner();
-        
-        Assert.assertTrue(SharkCSAlgebra.identical(bobInvitedChatOwner, alicealiceTag));
+        // TODO
+//        Assert.assertTrue(SharkCSAlgebra.identical(bobInvitedChatOwner, alicealiceTag));
 
         // subscribe
-        bobChat.subscribe();
+        // TODO
+//        bobChat.subscribe();
         
         // and listen to new entries
         bobChat.addListener(bobListener);
@@ -175,8 +178,10 @@ System.out.println(
 //        Thread.sleep(Integer.MAX_VALUE);
         
         // ok, Bob has subscribed - alice should know about it.
-        Enumeration<PeerSemanticTag> subscribedMember = aliceChat.subscribedMember();
+        // TODO
+//        Enumeration<PeerSemanticTag> subscribedMember = aliceChat.subscribedMember();
         
+        Enumeration<PeerSemanticTag> subscribedMember = null;
         Assert.assertNotNull(subscribedMember);
         
         boolean found = false;
@@ -230,7 +235,8 @@ System.out.println(
 "///////////////////////////////////////////////////////////////////////////////");
         
         // invite clara
-        aliceChat.inviteMember(claraTag, true);
+// TODO
+//        aliceChat.inviteMember(claraTag, true);
 
         Thread.sleep(sleepSeconds);
         
@@ -256,7 +262,8 @@ System.out.println(
         /* subscribe and wish to receive any document that was 
         * already exchanged in that chat
         */
-        claraChat.subscribe(0);
+// TODO
+//        claraChat.subscribe(0);
         
         // and listen to new entries
         claraChat.addListener(claraListener);
@@ -266,7 +273,8 @@ System.out.println(
 //        Thread.sleep(Integer.MAX_VALUE);
         
         // ok, Alice should know clara now
-        subscribedMember = aliceChat.subscribedMember();
+// TODO        
+//        subscribedMember = aliceChat.subscribedMember();
         
         Assert.assertNotNull(subscribedMember);
         
@@ -287,7 +295,8 @@ System.out.println(
 //        Thread.sleep(Integer.MAX_VALUE);
 
         // Bob should also know clara
-        subscribedMember = bobChat.subscribedMember();
+// TODO        
+//        subscribedMember = bobChat.subscribedMember();
         
         Assert.assertNotNull(subscribedMember);
         
@@ -348,7 +357,8 @@ System.out.println(
 System.out.println(
 "//////////////////////////////////////////////////////////////////////////////");
         // Bob unsubscribes
-        bobChat.unsubscribe();
+// TODO
+//        bobChat.unsubscribe();
         
         Thread.sleep(sleepSeconds);
         

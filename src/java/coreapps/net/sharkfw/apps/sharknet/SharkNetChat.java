@@ -8,7 +8,13 @@ import net.sharkfw.subspace.SubSpace;
 /**
  * @author thsc
  */
-public interface SharkNetChat extends SubSpace {
+public interface SharkNetChat /*extends SubSpace*/ {
+    public static final String CHAT_SUBSPACE_SUBTYPE = "chat";
+    
+    public String getSubSpaceSI();
+    
+    public void close();
+    
     /**
      * Create an entry in this chat with a message.
      * @param message
