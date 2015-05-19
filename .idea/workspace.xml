@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c999591-d8c7-4517-9d72-42a50af99a21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/Profile.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/Profile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileCurrentPositionImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileCurrentPositionImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileEntry.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileEntry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileEntryImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileEntryImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileFactoryImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileFactoryImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileTests/ProfileImplTest.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileTests/ProfileImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileNameImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileNameImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileTests/ProfileNameImplTest.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileTests/ProfileNameImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileProblemImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileProblemImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileQualificationImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileQualificationImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileSupportPossibilitiesImpl.class" afterPath="$PROJECT_DIR$/out/production/SharkProfile/Profile/ProfileSupportPossibilitiesImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/Profile.java" afterPath="$PROJECT_DIR$/src/Profile/Profile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileEntry.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileEntry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileEntryImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileEntryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileFactoryImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileFactoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileTests/ProfileImplTest.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileTests/ProfileImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileKnownLanguages.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileKnownLanguages.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileKnownLanguagesImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileKnownLanguagesImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileNameImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileNameImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileTests/ProfileNameImplTest.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileTests/ProfileNameImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileProblemImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileProblemImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileQualificationImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileQualificationImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Profile/ProfileSupportPossibilitiesImpl.java" afterPath="$PROJECT_DIR$/src/Profile/ProfileSupportPossibilitiesImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="7c999591-d8c7-4517-9d72-42a50af99a21" name="Default" comment="" />
     <ignored path="SharkProfile.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
