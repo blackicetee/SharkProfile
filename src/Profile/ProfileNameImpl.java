@@ -10,6 +10,9 @@ public class ProfileNameImpl implements ProfileName, Serializable {
     private String lastName = "";
     private String title = "";
 
+    public ProfileNameImpl(String sname) {
+        this.surname = sname;
+    }
 
     @Override
     public void setSurname(String surname) {

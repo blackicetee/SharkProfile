@@ -3,10 +3,12 @@ package Profile;
 import net.sharkfw.knowledgeBase.SpatialSemanticTag;
 import net.sharkfw.knowledgeBase.TimeSemanticTag;
 
+import java.io.Serializable;
+
 /**
  * Created by Mr.T on 06.05.2015.
  */
-public class ProfileEntryImpl implements ProfileEntry {
+public class ProfileEntryImpl implements ProfileEntry, Serializable {
     private static int uniqueID = 0;
     private byte[] description = null;
     private SpatialSemanticTag location = null;
@@ -24,9 +26,9 @@ public class ProfileEntryImpl implements ProfileEntry {
     }
 
     @Override
-    public void setDescription(byte[] description, ) {
-
+    public void setDescription(byte[] description, String type) {
         this.description = description;
+        this.contentType = type;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class ProfileEntryImpl implements ProfileEntry {
 
     @Override
     public void setLocation(SpatialSemanticTag sst) {
-        this.location = sst;
+        location = sst;
     }
 
     @Override
@@ -65,13 +67,7 @@ public class ProfileEntryImpl implements ProfileEntry {
     }
 
     @Override
-    public void setContentType(String type) {
-        contentType = type;
-
-    }
-
-    @Override
-    public String getContentType() {
+    public String getDescriptionContentType() {
         return contentType;
     }
 }

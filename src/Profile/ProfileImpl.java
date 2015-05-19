@@ -47,12 +47,22 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public void setName(ProfileName profileName) throws SharkKBException, IOException {
+    public PeerSemanticTag getProfileOwner() {
+        return profileOwner;
+    }
+
+    @Override
+    public PeerSemanticTag getProfileCreator() {
+        return profileCreator;
+    }
+
+    @Override
+    public void setName(ProfileName profileName) throws SharkKBException {
         addAndSerializeObjInContextPoint("ProfileName", profileName);
     }
 
     @Override
-    public ProfileName getName() throws SharkKBException, IOException, ClassNotFoundException {
+    public ProfileName getName() throws SharkKBException {
         return (ProfileName) getAndDeserializeObjFromContextPoint("ProfileName");
     }
 
@@ -76,7 +86,7 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public void setBirthday(Date datum) throws IOException, SharkKBException {
+    public void setBirthday(Date datum) throws SharkKBException {
         addAndSerializeObjInContextPoint("ProfileBirthday", datum);
     }
 
@@ -91,7 +101,7 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public void setTelephoneNumber(String number) throws SharkKBException, IOException {
+    public void setTelephoneNumber(String number) throws SharkKBException {
         addAndSerializeObjInContextPoint("Telephonenumber", number);
     }
 
@@ -101,7 +111,7 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public void setQualifications(ProfileQualification profileQualification) throws IOException, SharkKBException {
+    public void setQualifications(ProfileQualification profileQualification) throws SharkKBException {
         addAndSerializeObjInContextPoint("Qualification", profileQualification);
     }
 
@@ -111,42 +121,42 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public void setKnownLanguages(ProfileKnownLanguages knownLanguages) throws IOException, SharkKBException {
+    public void setKnownLanguages(ProfileKnownLanguages knownLanguages) throws SharkKBException {
         addAndSerializeObjInContextPoint("KnownLanguages", knownLanguages);
     }
 
     @Override
-    public ProfileKnownLanguages getKnownLanguages() throws IOException, ClassNotFoundException {
+    public ProfileKnownLanguages getKnownLanguages() throws SharkKBException {
         return (ProfileKnownLanguages) getAndDeserializeObjFromContextPoint("KnownLanguages");
     }
 
     @Override
-    public void setProblem(ProfileProblem profileProblem) throws IOException, SharkKBException {
+    public void setProblem(ProfileProblem profileProblem) throws SharkKBException {
         addAndSerializeObjInContextPoint("Problem", profileProblem);
     }
 
     @Override
-    public ProfileProblem getProblem() throws IOException, ClassNotFoundException {
+    public ProfileProblem getProblem() throws SharkKBException {
         return (ProfileProblem) getAndDeserializeObjFromContextPoint("Problem");
     }
 
     @Override
-    public void setCurrentPosition(ProfileCurrentPosition currentPosition) throws IOException, SharkKBException {
+    public void setCurrentPosition(ProfileCurrentPosition currentPosition) throws SharkKBException {
         addAndSerializeObjInContextPoint("CurrentPosition", currentPosition);
     }
 
     @Override
-    public ProfileCurrentPosition getCurrentPosition() throws IOException, ClassNotFoundException {
+    public ProfileCurrentPosition getCurrentPosition() throws SharkKBException {
         return (ProfileCurrentPosition) getAndDeserializeObjFromContextPoint("CurrentPosition");
     }
 
     @Override
-    public void setSupportPossibilities(ProfileSupportPossibilities profileSupportPossibilities) throws IOException, SharkKBException {
+    public void setSupportPossibilities(ProfileSupportPossibilities profileSupportPossibilities) throws SharkKBException {
         addAndSerializeObjInContextPoint("SupportPossibilities", profileSupportPossibilities);
     }
 
     @Override
-    public ProfileSupportPossibilities getSupportPossibilities() throws IOException, ClassNotFoundException {
+    public ProfileSupportPossibilities getSupportPossibilities() throws SharkKBException {
         return (ProfileSupportPossibilities) getAndDeserializeObjFromContextPoint("SupportPossibilities");
     }
 

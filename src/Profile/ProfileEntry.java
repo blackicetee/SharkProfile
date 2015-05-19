@@ -20,5 +20,5 @@ public interface ProfileEntry {
     void setTimeTo(TimeSemanticTag timeTo);
     TimeSemanticTag getTimeTo();
 
-    String getContentType();
+    String getDescriptionContentType();
 }
