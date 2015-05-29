@@ -12,7 +12,7 @@ public class ProfileNameImplTest {
     public void testSurname() throws Exception {
         String n = pName.getSurname();
         Assert.assertNotNull(n);
-        Assert.assertEquals(n, "Heinze");
+        Assert.assertEquals(n, "Paul");
         Assert.assertNotEquals(n, "Heinz");
     }
 

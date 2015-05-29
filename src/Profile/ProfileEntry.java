@@ -11,14 +11,14 @@ public interface ProfileEntry {
     void setDescription(byte[] description, String type);
     byte[] getDescription();
 
-    void setLocation(SpatialSemanticTag sst);
-    SpatialSemanticTag getLocation();
+    void setLocation(SpatialSemanticTag sst) throws SharkKBException;
+    SpatialSemanticTag getLocation() throws SharkKBException;
 
-    void setTimeFrom(TimeSemanticTag timeFrom);
-    TimeSemanticTag getTimeFrom();
+    void setTimeFrom(TimeSemanticTag timeFrom) throws SharkKBException;
+    TimeSemanticTag getTimeFrom() throws SharkKBException;
 
-    void setTimeTo(TimeSemanticTag timeTo);
-    TimeSemanticTag getTimeTo();
+    void setTimeTo(TimeSemanticTag timeTo) throws SharkKBException;
+    TimeSemanticTag getTimeTo() throws SharkKBException;
 
     String getDescriptionContentType();
 }

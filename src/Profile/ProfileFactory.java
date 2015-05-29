@@ -9,4 +9,5 @@ import net.sharkfw.knowledgeBase.SharkKBException;
 public interface ProfileFactory {
     Profile getProfile(PeerSemanticTag creator, PeerSemanticTag target) throws SharkKBException;
     Profile createProfile(PeerSemanticTag creator, PeerSemanticTag target) throws SharkKBException;
+
 }
